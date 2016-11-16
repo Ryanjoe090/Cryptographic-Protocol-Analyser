@@ -91,10 +91,12 @@ public class TermTest {
         System.out.println("hash");
         Term hashee = new Term("NONCE",Type.FRESH, 0);
         Term expResult = new Term("h(NONCE)",Type.HASH, 1);
-        expResult.setSubNodes(hashee);
+        expResult.setSubTerms(hashee);
         Term result = Term.hash(hashee);
         assertEquals(expResult.getTermString(), result.getTermString());
-        assertEquals(expResult.)
+        assertEquals(expResult.getArity(), result.getArity());
+        assertEquals(expResult.getType(), result.getType());
+        assertEquals(expResult.getSubTerms(), result.getSubTerms());
         // TODO review the generated test code and remove the default call to fail.
     }
 
