@@ -5,17 +5,10 @@
  */
 package security;
 
-
 /**
  *
  * @author ryanrobinson
  */
-public class Key {
-    public enum Type{PRIVATE, PUBLIC, SYMMETRIC}
-    private Type type; 
+public class Derivation {
     
-    public Key()
-    {
-        
-    }
 }

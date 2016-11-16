@@ -94,6 +94,7 @@ public class TermTest {
         expResult.setSubNodes(hashee);
         Term result = Term.hash(hashee);
         assertEquals(expResult.getTermString(), result.getTermString());
+        assertEquals(expResult.)
         // TODO review the generated test code and remove the default call to fail.
     }
 

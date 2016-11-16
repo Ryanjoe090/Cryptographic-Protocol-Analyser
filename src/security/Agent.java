@@ -21,9 +21,10 @@ public class Agent {
     private Role role;
     
     
-    public Agent(String name)
+    public Agent(String name, Role role)
     {
         this.name = name;
+        this.role = role;
     }
     
     

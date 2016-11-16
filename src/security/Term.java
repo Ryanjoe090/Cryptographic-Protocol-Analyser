@@ -87,9 +87,20 @@ public class Term {
         return hash;
     }
     
-    public void setSubNodes(Term term)
+    public static Term generateFresh(String name)
+    {
+        Term term = new Term(name, Type.FRESH, 0);
+        return term;
+    }
+    
+    public void setSubTerms(Term term)
     {
         subTerms.add(term);
+    }
+    
+    public List<Term> getSubTerms()
+    {
+        return subTerms;
     }
     
     
@@ -98,9 +109,13 @@ public class Term {
         return termString;
     }
     
-    public static Term generateFresh(String name)
+    public int getArity()
     {
-        Term term = new Term(name, Type.FRESH, 0);
-        return term;
+        return arity;
+    }
+    
+    public Type getType()
+    {
+        return type;
     }
 }
