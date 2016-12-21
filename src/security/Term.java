@@ -9,13 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+
 /**
  *
  * @author ryanrobinson
  */
 public class Term {
     
+
     public enum Type {PUBLIC, FRESH, HASH, AENC, ADEC, PK, SK, SYMM_KEY, VARIABLE, SENC, SDEC, EMPTY, LIST, HEAD, TAIL}
+
     
     private String termString;
     private Type type;    
@@ -35,6 +38,7 @@ public class Term {
         
     }
     
+
     /**
      * 
      * @param encryptee  The term to be encrypted
@@ -51,6 +55,7 @@ public class Term {
         return term;
     }
     
+
     /**
      * 
      * @param decryptee The Term Being Decrypted
@@ -66,6 +71,7 @@ public class Term {
         else return null;
     }
     
+
     /**
      * 
      * @param agent The agent for whom we are generating a key pair
@@ -95,6 +101,7 @@ public class Term {
         return hash;
     }
     
+
     public static Term createList(Stack<Term> terms)
     {
         String listString = "[" + terms.peek().termString + ",";
@@ -130,6 +137,7 @@ public class Term {
         return list;
     }
     
+
     public static Term generateFresh(String name)
     {
         Term term = new Term(name, Type.FRESH, 0);

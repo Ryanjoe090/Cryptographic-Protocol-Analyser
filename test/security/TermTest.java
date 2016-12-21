@@ -6,7 +6,9 @@
 package security;
 
 import java.util.List;
+
 import java.util.Stack;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -94,7 +96,6 @@ public class TermTest {
         Term expResult = new Term("h(NONCE)",Type.HASH, 1);
         expResult.setSubTerms(hashee);
         Term result = Term.hash(hashee);
-        result = Term.hash(result);
         assertEquals(expResult.getTermString(), result.getTermString());
         assertEquals(expResult.getArity(), result.getArity());
         assertEquals(expResult.getType(), result.getType());
@@ -116,6 +117,7 @@ public class TermTest {
         fail("The test case is a prototype.");
     }
     
+
     /**
      * Test of createList method, of class Term.
      */

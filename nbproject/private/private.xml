@@ -3,10 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Think/security/security-master/test/security/TermTest.java</file>
             <file>file:/C:/Users/Think/security/security-master/src/security/Term.java</file>
             <file>file:/C:/Users/Think/security/security-master/src/security/Parser.java</file>
             <file>file:/C:/Users/Think/security/security-master/test/security/ParserTest.java</file>
+=======
+            <file>file:/U:/tamarin/security/src/security/Term.java</file>
+            <file>file:/U:/tamarin/security/src/security/Agent.java</file>
+            <file>file:/U:/tamarin/security/src/security/Main.java</file>
+>>>>>>> 77cbdff5eb50c1c1876c0f599db89d7d019da54c
         </group>
     </open-files>
 </project-private>
