@@ -133,20 +133,24 @@ public class Parser {
         
         if(keyString.contains("pk("))
         {
-            String secretPair = keyString.replace("pk(", "sk(");
-            Term pair = new Term(secretPair, Type.SK, 1);
+            //String secretPair = keyString.replace("pk(", "sk(");
+            //Term pair = new Term(secretPair, Type.SK, 1);
+            String agent = keyString.substring(keyString.lastIndexOf("pk(")+3, keyString.length()-1);
+            Term keyHolder = parse(agent);
             finalKey = new Term(keyString, Type.PK, 1);
-            finalKey.setSubTerms(pair);
-            pair.setSubTerms(finalKey);
+            finalKey.setSubTerms(keyHolder);
+            //pair.setSubTerms(finalKey);
             
         }
         else if (keyString.contains("sk("))
         {
-            String publicPair = keyString.replace("sk(", "pk(");
-            Term pair = new Term(publicPair, Type.PK, 1);
+            //String publicPair = keyString.replace("sk(", "pk(");
+            //Term pair = new Term(publicPair, Type.PK, 1);
+            String agent = keyString.substring(keyString.lastIndexOf("sk(")+3, keyString.length()-1);
+            Term keyHolder = parse(agent);
             finalKey = new Term(keyString, Type.SK, 1);
-            finalKey.setSubTerms(pair);
-            pair.setSubTerms(finalKey);
+            finalKey.setSubTerms(keyHolder);
+            //pair.setSubTerms(finalKey);
         }
         else
         {
