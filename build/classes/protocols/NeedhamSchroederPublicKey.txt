@@ -1,0 +1,11 @@
+Needham Schroeder Public Key Protocol
+A: knows(A,B,S,sk(A),pk(A))
+B: knows(A,B,S,sk(B),pk(B))
+S: knows(A,B,S,sk(S),pk(A),pk(B),pk(S))
+A->S:[A,B]
+S->A:{[pk(B),B]}sk(S)
+A->B:{[Na,A]}pk(B)
+B->S:[B,A]
+S->B:{[pk(A),A]}sk(S)
+B->A:{[Na,Nb]}pk(A)
+A->B:{Nb}pk(B)

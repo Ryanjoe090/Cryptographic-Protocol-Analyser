@@ -131,8 +131,9 @@ public class Term {
             listString += "]";
             list = new Term(listString, Type.LIST, 2);
             list.setSubTerms(head);
-            tail.setSubTerms(createList(terms));
+            //tail.setSubTerms(createList(terms));
             list.setSubTerms(tail);
+            tail.setSubTerms(createList(terms)); ///take out
         }
         return list;
     }

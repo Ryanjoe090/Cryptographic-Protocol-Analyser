@@ -14,7 +14,7 @@ import security.Term.Type;
 
 /**
  *
- * @author Think
+ * @author ryanrobinson
  */
 public class Parser {
     Pattern p;
@@ -79,11 +79,21 @@ public class Parser {
                         //userList.
                         //tempList.
                     }
+                    
                 }
-                
+                //add the rest of the term into the tempList
+                //set the termsInList to be the tempList .toArray()
+                tempList.add(userList);
+                termsInList = new String[tempList.size()];
+                tempList.toArray(termsInList);              
             }
-            userList = userList.replace(" ", "");
-            termsInList = userList.split(",");
+            //add else statement here
+            else
+            {
+                userList = userList.replace(" ", "");
+                termsInList = userList.split(",");
+            }
+            //end if/else here
             for(String termS : termsInList)
             {
                 Term term;

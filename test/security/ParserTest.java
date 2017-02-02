@@ -43,7 +43,7 @@ public class ParserTest {
     @Test
     public void testParse() {
         System.out.println("parse");
-        String masterString = "[{[NA,NB]}pk(A),h(key),h({{NONCE}sk(T)}pk(U))]";
+        String masterString = "[{[NA]}pk(A),h(key),h({{NONCE}sk(T)}pk(U))]";
         Parser instance = new Parser();
         String expResult = "[NB,NA]";
         Term result = instance.parse(masterString);

@@ -1,0 +1,23 @@
+A: knows(A,B,S,sk(A))
+B: knows(A,B,S,sk(B))
+S: 
+A->S:[A,B]
+S->A:{[pk(B),B]}sk(S)
+A: Fresh(Na)
+A->B:{[Na,A]}pk(B)
+B->S:[B,A]
+S->B:{[pk(A),A]}sk(S)
+B: fresh(Nb)
+B->A:{[Na,Nb]}pk(A)
+A->B:{Nb}pk(B)
+
+
+Role A:
+
+knows(A,B,S,sk(A))
+1. Send(S,[A,B])
+2. Receive(S,{[pk(B),B]}sk(S))
+3. Fresh(Na)
+4. Send({[Na,A]}pk(B))
+5. Receive({[Na,Nb]}pk(A))
+6. Send({Nb}pk(B))
