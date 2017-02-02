@@ -6,8 +6,8 @@
 package security;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Stack;
 
 
 /**
@@ -102,7 +102,7 @@ public class Term {
     }
     
 
-    public static Term createList(Stack<Term> terms)
+    public static Term createList(LinkedList<Term> terms)
     {
         String listString = "[" + terms.peek().termString + ",";
         Term list;

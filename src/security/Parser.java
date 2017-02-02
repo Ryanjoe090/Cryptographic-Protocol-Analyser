@@ -52,7 +52,7 @@ public class Parser {
         
             Term finalList;
             String[] termsInList;
-            Stack<Term> termStack = new Stack();
+            LinkedList<Term> termStack = new LinkedList();
             userList = userList.substring(1, userList.length()-1);
             if(userList.contains("["))
             {
@@ -98,7 +98,7 @@ public class Parser {
             {
                 Term term;
                 term = parse(termS);
-                termStack.push(term);
+                termStack.add(term);
             }
             finalList = Term.createList(termStack);
             return finalList;

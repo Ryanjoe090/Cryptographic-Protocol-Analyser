@@ -5,9 +5,9 @@
  */
 package security;
 
+import java.util.LinkedList;
 import java.util.List;
 
-import java.util.Stack;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -124,13 +124,13 @@ public class TermTest {
     @Test
     public void testCreateList() {
         System.out.println("createList");
-        Stack<Term> myStack = new Stack();
+        LinkedList<Term> myStack = new LinkedList();
         Term item1 = new Term("NA",Type.FRESH, 0);
         Term item2 = new Term("h(KEY)",Type.HASH, 1);
         Term item3 = new Term("NB",Type.FRESH, 0);
-        myStack.push(item3);
-        myStack.push(item2);
-        myStack.push(item1);
+        myStack.add(item3);
+        myStack.add(item2);
+        myStack.add(item1);
         //Term instance = new Term();
         String expResult = "[NA, h(KEY), NB]";
         Term result = Term.createList(myStack);
