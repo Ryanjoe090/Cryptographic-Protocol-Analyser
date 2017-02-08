@@ -77,13 +77,18 @@ public class Environment {
     }
 
     public boolean takeStep(int runIdentifier) {
-        if(agents.get(runIdentifier).getStepCounter() > agents.get(runIdentifier).getRole().getSteps().size()-1)
+        int counter = agents.get(runIdentifier).getStepCounter();
+        Step step;
+        if(counter > agents.get(runIdentifier).getRole().getSteps().size()-1)
         {
             return false;
         }
         else
         {
+            //int counteragents.get(runIdentifier).getStepCounter()
+            step = agents.get(runIdentifier).getRole().getSteps().get(counter);
             agents.get(runIdentifier).incrementStep();
+            //networkBufferMethod(step);
         }
         return true;
     }
