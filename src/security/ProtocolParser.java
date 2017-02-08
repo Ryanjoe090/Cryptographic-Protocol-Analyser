@@ -27,8 +27,8 @@ public class ProtocolParser {
     {
         try {
             File dir = new File("src");
-            //File fin = new File(dir.getAbsolutePath() + File.separator + "protocols" + File.separator + "NeedhamSchroederPublicKey.txt");
-            File fin = new File("NeedhamSchroederPublicKey.txt");
+            File fin = new File(dir.getAbsolutePath() + File.separator + "protocols" + File.separator + "NeedhamSchroederPublicKey.txt");
+            //File fin = new File("NeedhamSchroederPublicKey.txt");
             parseProtocolFile(fin);
         } catch (IOException e) {
                 System.out.println("Didnt Parse");

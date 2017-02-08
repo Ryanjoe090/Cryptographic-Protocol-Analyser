@@ -21,6 +21,7 @@ public class Agent {
     private Role role;
     private Status status;
     private int runIdentifier;
+    private int stepCounter;
     
     
     public Agent(String name, Status status, int runIdentifier)
@@ -29,6 +30,7 @@ public class Agent {
         this.status = status;
         this.runIdentifier = runIdentifier;
         this.knowledge = new LinkedList<>();
+        stepCounter = 0;
     }
     
     public void setRole(Role role)
@@ -54,6 +56,16 @@ public class Agent {
     public Role getRole()
     {
         return role;
+    }
+    
+    public int getStepCounter()
+    {
+        return stepCounter;
+    }
+    
+    public void incrementStep()
+    {
+        stepCounter++;
     }
     
 }
