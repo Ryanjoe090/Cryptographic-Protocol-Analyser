@@ -50,4 +50,14 @@ public class Role {
     {
         return agent;
     }
+    
+    public List<Step> getSteps()
+    {
+        return steps;
+    }
+    
+    public List<Term> getKnowledge()
+    {
+        return initialKnowledge;
+    }
 }

@@ -37,4 +37,9 @@ public class Protocol {
             }
         }
     }
+    
+    public List<Role> getRole()
+    {
+        return roles;
+    }
 }

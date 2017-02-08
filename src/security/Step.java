@@ -28,4 +28,14 @@ public class Step {
         this.term = term;
         this.recipiant = recipiant;
     }
+    
+    public Action getAction()
+    {
+        return action;
+    }
+    
+    public Term getTerm()
+    {
+        return term;
+    }
 }

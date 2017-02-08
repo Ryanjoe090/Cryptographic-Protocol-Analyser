@@ -16,7 +16,11 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+        System.out.println("MEMEMEME");
+        ProtocolParser parser = new ProtocolParser();
+        Protocol protocol = parser.parseProtocol("pray4ryan");
+        Environment instance = new Environment(protocol);
+        instance.run();
     }
     
 }
