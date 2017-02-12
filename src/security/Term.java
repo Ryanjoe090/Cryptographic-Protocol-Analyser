@@ -8,6 +8,7 @@ package security;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -186,4 +187,24 @@ public class Term {
     {
         return type;
     }
+    
+    @Override
+    public boolean equals(final Object obj)
+    {
+        if (obj == this) return true;
+        if (!(obj instanceof Term)) {
+            return false;
+        }
+        Term comp = (Term) obj;
+        return arity == comp.arity &&
+                Objects.equals(termString, comp.termString) &&
+                Objects.equals(type, comp.type) &&
+                Objects.equals(subTerms, comp.subTerms);
+    }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash(arity, termString, type, subTerms);
+    }
+    
 }

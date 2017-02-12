@@ -7,6 +7,7 @@ package security;
 
 import java.util.LinkedList;
 import java.util.List;
+import security.Term.Type;
 
 /**
  *
@@ -41,6 +42,29 @@ public class Agent {
     public void setKnowledge(List<Term> knowledge)
     {
         this.knowledge = knowledge;
+    }
+    
+    public void addKnowledge(Term term)
+    {
+        if(knowledge.contains(term))
+        {
+            System.out.println("Already in knowledge");
+        }
+        else if(term.getType().equals(Type.LIST))
+        {
+            List<Term> listTerm = Derivation.breakdownTermList(term);
+            for(Term t : listTerm)
+            {
+                if(!knowledge.contains(t))
+                {
+                    knowledge.add(t);
+                }
+            }
+        }
+        else
+        {
+            knowledge.add(term);
+        }
     }
     
     public String getName()

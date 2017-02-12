@@ -125,7 +125,23 @@ public class Environment {
             else if(step.getAction().equals(Action.RECIEVE))
             {
                 //if there is a message for me check if it is in the messageMap
-                
+                if(messageMap.contains(step.getTerm().getTermString()+":"+runIdentifier))
+                {
+                    agents.get(runIdentifier).addKnowledge(step.getTerm());
+                }
+                else
+                {
+                    return false;
+                }
+//                for(String message : messageMap)
+//                {
+//                    if(message.equals(step.getTerm()+":"+agents.get(runIdentifier).getName()))
+//                    {
+//                        //add to knowledgeagent
+//                        agents.get(runIdentifier).addKnowledge(step.getTerm());
+//                        return true;
+//                    }
+//                }
             }
             //step = agents.get(runIdentifier).getRole().getSteps().get(counter);
             agents.get(runIdentifier).incrementStep();
