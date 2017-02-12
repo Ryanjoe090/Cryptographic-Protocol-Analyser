@@ -10,4 +10,4 @@ B->S:[B,A]
 S->B:{[pk(A),A]}sk(S)
 B: fresh(NB)
 B->A:{[NA,NB]}pk(A)
-A->B:{Nb}pk(B)
+A->B:{NB}pk(B)

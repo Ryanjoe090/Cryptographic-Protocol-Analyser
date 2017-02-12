@@ -38,4 +38,9 @@ public class Step {
     {
         return term;
     }
+    
+    public String getRecipiant()
+    {
+        return recipiant;
+    }
 }
