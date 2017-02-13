@@ -143,6 +143,10 @@ public class Environment {
 //                    }
 //                }
             }
+            else if(step.getAction().equals(Action.FRESH))
+            {
+                agents.get(runIdentifier).addKnowledge(step.getTerm());
+            }
             //step = agents.get(runIdentifier).getRole().getSteps().get(counter);
             agents.get(runIdentifier).incrementStep();
             //networkBufferMethod(step);
