@@ -175,4 +175,69 @@ public class Parser {
        return variable;
     }
     
+    public static String correctParse(String term, String replacee, String replacer)
+    {
+        //\{([A^)]+)\}
+        //String function = "/\\(([" + replacee + "^)]+)\\)/g";
+        String function = "\\(" + replacee + "\\)";
+        //String encryption = "/\\{([" + replacee + "^)]+)\\}/g";
+        String encryption = "\\{" + replacee + "\\}";
+        //String list1 = "/\\[([" + replacee + "^)]+)\\,/g";
+        String list1 = "\\[" + replacee + "\\,";
+        //String list2 = "/\\,([" + replacee + "^)]+)\\,/g";
+        String list2 = "\\," + replacee + "\\,";
+        //String list3 = "/\\,([" + replacee + "^)]+)\\]/g";
+        String list3 = "\\," + replacee + "\\]";
+        
+        term = term.replaceAll(function, "(" + replacer + ")");
+        term = term.replaceAll(encryption, "{" + replacer + "}");
+        term = term.replaceAll(list1, "[" + replacer + ",");
+        term = term.replaceAll(list2, "," + replacer + ",");
+        term = term.replaceAll(list3, "," + replacer + "]");
+        
+        
+        /*if(term.getTermString().substring(0,1).equals("["))
+        {
+            parseCorrectList(term);
+        }
+        else if(term.getTermString().substring(0,1).equals("{"))
+        {
+           parseCorrectEncryption(term);
+        }
+        else if(term.getTermString().substring(0,1).equals("h"))
+        {
+           parseCorrectHash(term);
+        }
+        else if(term.getTermString().substring(0,3).equals("pk(") || term.getTermString().substring(0,3).equals("sk("))
+        {
+           parseCorrectKey(term);
+        }
+        else
+        {
+           //term = parseVariable(masterString);
+        }*/
+        return term;
+    }
+    
+    private void parseCorrectList(Term term)
+    {
+        
+    }
+    
+    private void parseCorrectEncryption(Term term)
+    {
+        //\(([B^)]+)\)
+        //\{([A^)]+)\}
+    }
+    
+    private void parseCorrectHash(Term term)
+    {
+        //\(([B^)]+)\)
+    }
+    
+    private void parseCorrectKey(Term term)
+    {
+        //\(([B^)]+)\)
+    }
+    
 }

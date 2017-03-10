@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Scanner;
 import security.Agent.Status;
 import security.Step.Action;
+import security.Term.Type;
 
 /**
  *
@@ -49,14 +50,15 @@ public class Environment {
                 String name = reader.next();
                 int id = createAgent(name);
                 System.out.println("My name is: " + agents.get(id).getName() + "\nMy Run Identifier is: " + agents.get(id).getRunIdentifier());
-                System.out.println("Give Role:\n" + protocol.getRole().get(0).getAgent() + "\n" + protocol.getRole().get(1).getAgent() + "\n" + protocol.getRole().get(2).getAgent());
+                /*System.out.println("Give Role:\n" + protocol.getRole().get(0).getAgent() + "\n" + protocol.getRole().get(1).getAgent() + "\n" + protocol.getRole().get(2).getAgent());
                 String roleAgent = reader.next();
                 
                 agents.get(id).setRole(protocol.getRole().get(roleMap.get(roleAgent)));
                 agents.get(id).setKnowledge(protocol.getRole().get(roleMap.get(roleAgent)).getKnowledge());
                 for(Step step : agents.get(id).getRole().getSteps()) {
                     System.out.println(step.getAction().toString() + " " + step.getTerm().getTermString());
-                }
+                }*/
+                setRole(reader, id);
             }
             else if (n==2)
             {
@@ -70,6 +72,21 @@ public class Environment {
                 System.out.println("Step Taken: " + stepsDone);
             }
         }
+    }
+    
+    public void setRole(Scanner reader, int id)
+    {
+        System.out.println("Give Role:\n" + protocol.getRole().get(0).getAgent() + "\n" + protocol.getRole().get(1).getAgent() + "\n" + protocol.getRole().get(2).getAgent());
+                String roleAgent = reader.next();
+                
+                agents.get(id).setRole(protocol.getRole().get(roleMap.get(roleAgent)));
+                agents.get(id).setKnowledge(protocol.getRole().get(roleMap.get(roleAgent)).getKnowledge());
+                Term newPublic = new Term(agents.get(id).getName(),Type.PUBLIC,0);
+                Term oldTerm = new Term(agents.get(id).getRole().getAgent(),Type.VARIABLE,0);
+                agents.get(id).correctVariable(newPublic, oldTerm);
+                for(Step step : agents.get(id).getRole().getSteps()) {
+                    System.out.println(step.getAction().toString() + " " + step.getTerm().getTermString());
+                }
     }
 
     public int createAgent(String name) {

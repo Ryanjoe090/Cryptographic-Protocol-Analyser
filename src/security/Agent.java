@@ -67,6 +67,52 @@ public class Agent {
         }
     }
     
+    public void correctVariable(Term newTerm, Term oldVariable)
+    {
+        for(int i=0;i<knowledge.size();i++) //if its in it knowledge
+        {
+            if(knowledge.get(i).equals(oldVariable))
+            {
+                knowledge.get(i).overwriteTerm(newTerm);// = newTerm;
+            }
+            else if(!(knowledge.get(i).getArity() == 0))
+            {
+                //corectSubterms & correct termString
+                correctSubTerms(newTerm, oldVariable, knowledge.get(i));
+            }
+        }
+        
+        for(Step step : role.getSteps())
+        {
+            if(step.getTerm().equals(oldVariable))
+            {
+                step.setTerm(newTerm);
+            }
+            else if(!(step.getTerm().getArity() == 0))
+            {
+                correctSubTerms(newTerm, oldVariable, step.getTerm());
+            }
+        }
+    }
+    
+    public void correctSubTerms(Term newTerm, Term oldVariable, Term tree)
+    {
+        for(int i=0;i<tree.getSubTerms().size();i++)
+        {
+            if(tree.getSubTerms().get(i).equals(oldVariable))
+            { //need new overwrite method in term
+                tree.setTermString(Parser.correctParse(tree.getTermString(),oldVariable.getTermString(),newTerm.getTermString()));
+                tree.overwriteSubTerm(i, newTerm);// = newTerm;
+            }
+            else if(!(tree.getSubTerms().get(i).getArity() == 0))
+            {
+                //corectSubterms// here correct termstring
+                tree.setTermString(Parser.correctParse(tree.getTermString(),oldVariable.getTermString(),newTerm.getTermString()));
+                correctSubTerms(newTerm, oldVariable, tree.getSubTerms().get(i));
+            }
+        }
+    }
+    
     public String getName()
     {
         return name;

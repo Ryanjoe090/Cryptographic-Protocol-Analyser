@@ -188,6 +188,25 @@ public class Term {
         return type;
     }
     
+    public void setTermString(String termString)
+    {
+        this.termString = termString;
+    }
+    
+    public void overwriteTerm(Term term)
+    {
+        this.termString = term.termString;
+        this.type = term.type;
+        this.subTerms = term.subTerms;
+        this.arity = term.arity;
+    }
+    
+    public void overwriteSubTerm(int index, Term term)
+    {
+        //parseCorrect ahhhhhhhhhhhhhhhhhhhhh i have to fix termstrings above
+        this.subTerms.get(index).overwriteTerm(term);
+    }
+    
     @Override
     public boolean equals(final Object obj)
     {

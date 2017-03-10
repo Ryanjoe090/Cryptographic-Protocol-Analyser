@@ -43,4 +43,9 @@ public class Step {
     {
         return recipiant;
     }
+    
+    public void setTerm(Term term)
+    {
+        this.term = term;
+    }
 }
