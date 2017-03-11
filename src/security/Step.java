@@ -29,6 +29,11 @@ public class Step {
         this.recipiant = recipiant;
     }
     
+    public Step()
+    {
+        
+    }
+    
     public Action getAction()
     {
         return action;
@@ -47,5 +52,23 @@ public class Step {
     public void setTerm(Term term)
     {
         this.term = term;
+    }
+    
+    public void setAction(Action action)
+    {
+        this.action = action;
+    }
+    
+    public void setRecipiant(String recipiant)
+    {
+        this.recipiant = recipiant;
+    }
+    
+    
+    public void overwriteStep(Step step)
+    {
+        this.term.overwriteTerm(step.term);
+        this.action = step.action;
+        this.recipiant = step.recipiant;
     }
 }

@@ -60,4 +60,30 @@ public class Role {
     {
         return initialKnowledge;
     }
+    
+    public void setSteps(List<Step> steps)
+    {
+        this.steps = steps;
+    }
+    
+    public void setAllKnowledge(List<Term> initialKnowledge)
+    {
+        for(Term term : initialKnowledge)
+        {
+            Term newTerm = new Term();
+            newTerm.overwriteTerm(term);
+            this.initialKnowledge.add(newTerm);
+        }
+    }
+    
+    public void setAllSteps(List<Step> steps)
+    {
+        for(Step step : steps)
+        {
+            Term term = new Term();
+            Step newStep = new Step();
+            newStep.setTerm(term);
+            newStep.overwriteStep(step);
+        }
+    }
 }

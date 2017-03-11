@@ -78,11 +78,15 @@ public class Environment {
     {
         System.out.println("Give Role:\n" + protocol.getRole().get(0).getAgent() + "\n" + protocol.getRole().get(1).getAgent() + "\n" + protocol.getRole().get(2).getAgent());
                 String roleAgent = reader.next();
-                
-                agents.get(id).setRole(protocol.getRole().get(roleMap.get(roleAgent)));
-                agents.get(id).setKnowledge(protocol.getRole().get(roleMap.get(roleAgent)).getKnowledge());
+                //Role role = protocol.getRole().get(roleMap.get(roleAgent));
+                Role role = new Role(agents.get(id).getName());
+                role.setAllKnowledge(new LinkedList(protocol.getRole().get(roleMap.get(roleAgent)).getKnowledge()));
+                role.setAllSteps(new LinkedList(protocol.getRole().get(roleMap.get(roleAgent)).getSteps()));
+                List<Term> knowledge = new LinkedList(role.getKnowledge());
+                agents.get(id).setRole(role);
+                agents.get(id).setKnowledge(knowledge);
                 Term newPublic = new Term(agents.get(id).getName(),Type.PUBLIC,0);
-                Term oldTerm = new Term(agents.get(id).getRole().getAgent(),Type.VARIABLE,0);
+                Term oldTerm = new Term(protocol.getRole().get(roleMap.get(roleAgent)).getAgent(),Type.VARIABLE,0);
                 agents.get(id).correctVariable(newPublic, oldTerm);
                 for(Step step : agents.get(id).getRole().getSteps()) {
                     System.out.println(step.getAction().toString() + " " + step.getTerm().getTermString());
