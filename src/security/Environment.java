@@ -124,6 +124,18 @@ public class Environment {
             }
             int replaceID = reader.nextInt();
             agents.get(agentID).correctVariable(new Term(agents.get(replaceID).getName(),Type.PUBLIC,0), variables.get(variableID));
+            
+            //now correct recipient in steps
+            for(int i=0;i<agents.get(agentID).getRole().getSteps().size();i++)
+            {
+                if(agents.get(agentID).getRole().getSteps().get(i).getAction().equals(Action.SEND))
+                {
+                    if(agents.get(agentID).getRole().getSteps().get(i).getRecipiant().equals(variables.get(variableID).getTermString()))
+                    {
+                        agents.get(agentID).getRole().getSteps().get(i).setRecipiant(agents.get(replaceID).getName());
+                    }
+                }
+            }
         }
         else if(correctWith==2)
         {
