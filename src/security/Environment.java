@@ -71,6 +71,10 @@ public class Environment {
                 boolean stepsDone = takeStep(agent, reader);
                 System.out.println("Step Taken: " + stepsDone);
             }
+            else if(n==3)
+            {
+                correctVariable(reader);
+            }
         }
     }
     
@@ -91,6 +95,40 @@ public class Environment {
                 for(Step step : agents.get(id).getRole().getSteps()) {
                     System.out.println(step.getAction().toString() + " " + step.getTerm().getTermString());
                 }
+    }
+    
+    public void correctVariable(Scanner reader)
+    {
+        System.out.println("\nCHOOSE AGENT TO CORRECT KNOWLEDGE:");
+        for(Agent agent : agents)
+        {
+            System.out.println(agent.getRunIdentifier() + ": " + agent.getName());
+        }
+        int agentID = reader.nextInt();
+        List<Term> variables = agents.get(agentID).getVariables();
+        System.out.println("\nCHOOSE VARIABLE TO CORRECT:");
+        for(int i=0;i<variables.size();i++)
+        {
+            System.out.println(i + ": " + variables.get(i).getTermString());
+        }
+        int variableID = reader.nextInt();
+        System.out.println("\nCORRECT WITH\n1: Agent\n2: Fresh");
+        int correctWith = reader.nextInt();
+        if(correctWith==1)
+        {
+            //correct with agent
+            System.out.println("\nCORRECT WITH AGENT:");
+            for(Agent agent : agents)
+            {
+                System.out.println(agent.getRunIdentifier() + ": " + agent.getName());
+            }
+            int replaceID = reader.nextInt();
+            agents.get(agentID).correctVariable(new Term(agents.get(replaceID).getName(),Type.PUBLIC,0), variables.get(variableID));
+        }
+        else if(correctWith==2)
+        {
+            
+        }
     }
 
     public int createAgent(String name) {

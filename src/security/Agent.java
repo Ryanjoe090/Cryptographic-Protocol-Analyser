@@ -138,4 +138,65 @@ public class Agent {
         stepCounter++;
     }
     
+    public List<Term> getVariables()
+    {
+        List<Term> variables = new LinkedList<>();
+        for(int i=0;i<knowledge.size();i++) //if its in it knowledge
+        {
+            if(knowledge.get(i).getType().equals(Type.VARIABLE))
+            {
+                if(!variables.contains(knowledge.get(i)))
+                {
+                    Term term = new Term();
+                    term.overwriteTerm(knowledge.get(i));
+                    variables.add(term);// = newTerm;
+                }
+            }
+            else if(!(knowledge.get(i).getArity() == 0))
+            {
+                //corectSubterms & correct termString
+                getSubVariables(knowledge.get(i), variables);
+            }
+        }
+        
+        for(Step step : role.getSteps())
+        {
+            if(step.getTerm().getType().equals(Type.VARIABLE))
+            {
+                if(!variables.contains(step.getTerm()))
+                {
+                    Term term = new Term();
+                    term.overwriteTerm(step.getTerm());
+                    variables.add(term);
+                }
+            }
+            else if(!(step.getTerm().getArity() == 0))
+            {
+                getSubVariables(step.getTerm(),variables);
+            }
+        }
+        return variables;
+    }
+    
+    public void getSubVariables(Term tree, List<Term> variables)
+    {
+        for(int i=0;i<tree.getSubTerms().size();i++)
+        {
+            if(tree.getSubTerms().get(i).getType().equals(Type.VARIABLE))
+            { //need new overwrite method in term
+                if(!variables.contains(tree.getSubTerms().get(i)))
+                {
+                    Term term = new Term();
+                    term.overwriteTerm(tree.getSubTerms().get(i));
+                    variables.add(term);// = newTerm;
+                }
+            }
+            else if(!(tree.getSubTerms().get(i).getArity() == 0))
+            {
+                //corectSubterms// here correct termstring               
+                getSubVariables(tree.getSubTerms().get(i),variables);
+            }
+        }
+    }
+    
 }
