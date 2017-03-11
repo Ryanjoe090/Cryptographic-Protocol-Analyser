@@ -84,6 +84,7 @@ public class Role {
             Step newStep = new Step();
             newStep.setTerm(term);
             newStep.overwriteStep(step);
+            this.steps.add(newStep);
         }
     }
 }

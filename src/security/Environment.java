@@ -106,6 +106,7 @@ public class Environment {
         Step step;
         if(counter > agents.get(runIdentifier).getRole().getSteps().size()-1)
         {
+            System.out.println("Exceeded Role steps");
             return false;
         }
         else
