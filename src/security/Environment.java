@@ -112,19 +112,20 @@ public class Environment {
             System.out.println(i + ": " + variables.get(i).getTermString());
         }
         int variableID = reader.nextInt();
-        System.out.println("\nCORRECT WITH\n1: Agent\n2: Fresh");
+        System.out.println("\nCORRECT WITH\n1: Public\n2: Fresh");
         int correctWith = reader.nextInt();
         if(correctWith==1)
         {
             //correct with agent
-            System.out.println("\nCORRECT WITH AGENT:");
-            for(Agent agent : agents)
+            System.out.println("\nCORRECT WITH AGENT:\nTYPE NAME:");
+            /*for(Agent agent : agents)
             {
                 System.out.println(agent.getRunIdentifier() + ": " + agent.getName());
-            }
-            int replaceID = reader.nextInt();
-            agents.get(agentID).correctVariable(new Term(agents.get(replaceID).getName(),Type.PUBLIC,0), variables.get(variableID));
-            
+            }*/
+            //int replaceID = reader.nextInt();
+            String newTermString = reader.next();
+            //agents.get(agentID).correctVariable(new Term(agents.get(replaceID).getName(),Type.PUBLIC,0), variables.get(variableID));
+            agents.get(agentID).correctVariable(new Term(newTermString,Type.PUBLIC,0), variables.get(variableID));
             //now correct recipient in steps
             for(int i=0;i<agents.get(agentID).getRole().getSteps().size();i++)
             {
@@ -132,7 +133,8 @@ public class Environment {
                 {
                     if(agents.get(agentID).getRole().getSteps().get(i).getRecipiant().equals(variables.get(variableID).getTermString()))
                     {
-                        agents.get(agentID).getRole().getSteps().get(i).setRecipiant(agents.get(replaceID).getName());
+                        //agents.get(agentID).getRole().getSteps().get(i).setRecipiant(agents.get(replaceID).getName());
+                        agents.get(agentID).getRole().getSteps().get(i).setRecipiant(newTermString);
                     }
                 }
             }
