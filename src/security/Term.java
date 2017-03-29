@@ -142,7 +142,7 @@ public class Term {
             //listString += (head.termString + ",");           
             for(Term term : terms)
             {
-                listString += (" " + term.termString + ",");
+                listString += (term.termString + ",");
             }
             listString = listString.substring(0,listString.length()-1);
             listString += "]";

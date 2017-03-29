@@ -169,7 +169,7 @@ public class Environment {
                 System.out.println("Ree");
                 //messageMap.get(runIdentifier).add(step.getTerm()); 
                 //ask user whom they wish to send to
-                System.out.println("Send to: ");
+                /*System.out.println("Send to: ");
                 //loop to list ALL people of 'ROLE S'
                 for(Agent agent : agents)
                 {
@@ -179,9 +179,9 @@ public class Environment {
                     }
                 }
                 //take user input
-                int runID = reader.nextInt();
+                int runID = reader.nextInt();*/
                 //CHECK TO SEE IF SELECTED RUN IDENTIFIER MATCHES AGENT OF ROLE S
-                if(!agents.get(runID).getRole().getAgent().equals(step.getRecipiant()))
+                /*if(!agents.get(runID).getRole().getAgent().equals(step.getRecipiant()))
                 {
                     //messageMap.add(step.getTerm().getTermString()+":"+runID);
                     return false;
@@ -189,15 +189,22 @@ public class Environment {
                 else
                 {
                     messageMap.add(step.getTerm().getTermString()+":"+runID);
-                }
+                }*/
                 //if so add to messageMap ::::APPEND RECIPIANT
                 //add to network buffer
+                messageMap.add(step.getTerm().getTermString()+":"+step.getRecipiant());
                 networkBuffer.add(step.getTerm());
             }
             else if(step.getAction().equals(Action.RECIEVE))
             {
                 //if there is a message for me check if it is in the messageMap
-                if(messageMap.contains(step.getTerm().getTermString()+":"+runIdentifier))
+                for(int i=0;i<networkBuffer.size();i++)
+                {
+                    System.out.println(i+":"+networkBuffer.get(i).getTermString());
+                }
+                int bufferTerm = reader.nextInt();
+                //if(messageMap.contains(step.getTerm().getTermString()+":"+runIdentifier))
+                if(networkBuffer.get(bufferTerm).equals(step.getTerm()))
                 {
                     agents.get(runIdentifier).addKnowledge(step.getTerm());
                 }

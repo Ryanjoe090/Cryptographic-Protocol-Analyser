@@ -22,6 +22,7 @@ public class Parser {
     
     public Term parse(String masterString)
     {
+        
         Term term;
         if(masterString.substring(0,1).equals("["))
         {
@@ -188,12 +189,15 @@ public class Parser {
         String list2 = "\\," + replacee + "\\,";
         //String list3 = "/\\,([" + replacee + "^)]+)\\]/g";
         String list3 = "\\," + replacee + "\\]";
+        String list4 = "\\[" + replacee + "\\]";
+        
         
         term = term.replaceAll(function, "(" + replacer + ")");
         term = term.replaceAll(encryption, "{" + replacer + "}");
         term = term.replaceAll(list1, "[" + replacer + ",");
         term = term.replaceAll(list2, "," + replacer + ",");
         term = term.replaceAll(list3, "," + replacer + "]");
+        term = term.replaceAll(list4, "[" + replacer + "]");
         
         
         /*if(term.getTermString().substring(0,1).equals("["))
